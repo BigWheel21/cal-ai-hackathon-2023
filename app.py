@@ -28,10 +28,12 @@ app.layout = html.Div([
     State('input-on-submit', 'value')
 )
 def update_output(n_clicks, value):
-    res = generate_visual_code(data, value, chat)
-    code = extract_python_code(res.content)
-    exec(code, globals()) 
-    return fig
+    if n_clicks>0:
+        res = generate_visual_code(data, value, chat)
+        code = extract_python_code(res.content)
+        exec(code, globals()) # the code from LLM will store the graph in the variable "fig"
+        return fig
+    return {}
 
 if __name__ == '__main__':
     app.run_server(debug=False)
