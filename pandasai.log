@@ -1,0 +1,43 @@
+2023-06-17 22:47:57 [INFO] Running PandasAI with openai LLM...
+2023-06-17 22:47:57 [INFO] Prompt ID: 4fc9f3c3-04ad-4063-bde7-81b894ad8f7b
+2023-06-17 22:48:02 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+
+df = pd.read_csv('data.csv')
+
+# Describe the dataframe
+print(df.describe())
+
+# Calculate the percentage change of each stock
+df_pct_change = df.pct_change()
+
+# Calculate the difference in performance between APPL and SP
+appl_sp_diff = df_pct_change['APPL'] - df_pct_change['SP']
+
+# Print the difference in performance
+print("The difference in performance between APPL and SP is:")
+print(appl_sp_diff)
+
+# Determine if APPL outperformed SP
+if appl_sp_diff.mean() > 0:
+    print("APPL outperformed SP.")
+else:
+    print("APPL did not outperform SP.")
+                        ```
+                    
+2023-06-17 22:48:02 [INFO] 
+Code running:
+```
+print(df.describe())
+df_pct_change = df.pct_change()
+appl_sp_diff = df_pct_change['APPL'] - df_pct_change['SP']
+print('The difference in performance between APPL and SP is:')
+print(appl_sp_diff)
+if appl_sp_diff.mean() > 0:
+    print('APPL outperformed SP.')
+else:
+    print('APPL did not outperform SP.')
+```
+2023-06-17 22:48:21 [INFO] Answer: APPL did not outperform SP.
