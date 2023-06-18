@@ -4,6 +4,9 @@ from langchain.schema import (
     HumanMessage,
     SystemMessage
 )
+import openai
+
+history = []
 
 def get_chatbot(model_name='gpt-4-0613'):
     chat = ChatOpenAI(model_name=model_name)
@@ -11,22 +14,31 @@ def get_chatbot(model_name='gpt-4-0613'):
 
 def generate_visual_code(data, prompt, chat):
 
-    sys_msg = SystemMessage(content = 
-    f"""
+    sys_msg = {'role': 'system', 
+               'content': f"""
     You are a Python programmer who uses Plotly package to visualize data. You have the following data in the python pandas format: {data}. 
     assume that the data has been loaded by Pandas package with the variable name "data".
     You will write plot functions like:
     import plotly
         ...
     fig = ...
-    """)
+    """}
 
     prompt_template = f"""
     {prompt} Generate the python code for this plot using Plotly package. 
     """ 
-    human_msg = HumanMessage(content = prompt_template)
-    res = chat([sys_msg, human_msg])
-    return res.content
+    human_msg = {'role': 'user', 'content': prompt_template}
+    history.extend([sys_msg, human_msg])
+    res = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=history
+    )
+
+    history.append({
+        'role': 'assistant',
+        'content': res['choices'][0]['message']['content']
+    })
+    return res['choices'][0]['message']['content']
 
 def extract_python_code(text):
     index1 = text.find('```python\n')

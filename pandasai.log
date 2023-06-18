@@ -41,3 +41,43 @@ else:
     print('APPL did not outperform SP.')
 ```
 2023-06-17 22:48:21 [INFO] Answer: APPL did not outperform SP.
+2023-06-17 23:35:43 [INFO] error_code=invalid_api_key error_message= error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-06-17 23:49:55 [INFO] error_code=model_not_found error_message='The model: `gpt-4-0613` does not exist' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-06-17 23:52:24 [INFO] error_code=model_not_found error_message='The model: `gpt-4` does not exist' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-06-17 23:53:11 [INFO] error_code=model_not_found error_message='The model: `gpt-4-0613` does not exist' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-06-17 23:59:44 [INFO] error_code=None error_message='That model is currently overloaded with other requests. You can retry your request, or contact us through our help center at help.openai.com if the error persists. (Please include the request ID fd3bac23a8ab9e40a49550c316de3722 in your message.)' error_param=None error_type=server_error message='OpenAI API error received' stream_error=False
+2023-06-17 23:59:44 [WARNING] Retrying langchain.chat_models.openai.ChatOpenAI.completion_with_retry.<locals>._completion_with_retry in 1.0 seconds as it raised RateLimitError: That model is currently overloaded with other requests. You can retry your request, or contact us through our help center at help.openai.com if the error persists. (Please include the request ID fd3bac23a8ab9e40a49550c316de3722 in your message.).
+2023-06-18 00:02:35 [INFO] Running PandasAI with openai LLM...
+2023-06-18 00:02:35 [INFO] Prompt ID: 95c8b0b1-bb00-4aa4-a937-e9b9e72f6438
+2023-06-18 00:02:44 [INFO] Running PandasAI with openai LLM...
+2023-06-18 00:02:44 [INFO] Prompt ID: 327dfb12-4733-4116-9bfe-22a473a199fe
+2023-06-18 00:02:54 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+
+df = pd.DataFrame({
+    'GME': [23.02, 19.23, 24.05, 19.29, 23.02],
+    'SP': ['3,970.15', '4,169.48', '4,109.31', '4,179.83', '4,409.59'],
+    'APPL': [169.68, 147.41, 164.90, 147.41, 184.92]
+})
+
+# To get the metadata of the dataframe
+df.info()
+
+# To get the first 5 rows of the dataframe
+df.head()
+                        ```
+                    
+2023-06-18 00:02:54 [INFO] 
+Code running:
+```
+df.info()
+df.head()
+```
+2023-06-18 00:02:54 [INFO] Answer:      GME        SP    APPL
+0  24.56  4,409.59  184.92
+1  24.05  4,179.83  177.25
+2  19.29  4,169.48  169.68
+3  23.02  4,109.31  164.90
+4  19.23  3,970.15  147.41
