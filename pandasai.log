@@ -81,3 +81,4 @@ df.head()
 2  19.29  4,169.48  169.68
 3  23.02  4,109.31  164.90
 4  19.23  3,970.15  147.41
+2023-06-18 10:28:50 [INFO] error_code=invalid_api_key error_message= error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False

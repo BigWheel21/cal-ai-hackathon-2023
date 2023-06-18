@@ -14,19 +14,49 @@ from pandasai import PandasAI
 from utils import *
 from langchain.chat_models import ChatOpenAI
 from pandasai.llm.openai import OpenAI
+from PIL import Image
 
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = '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'
 chat = get_chatbot(model_name='gpt-4-0613')
-openai_api_key = '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'
+openai_api_key = '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'
 #data_analyze_agent = create_pandas_dataframe_agent(chat, data, memory=ConversationBufferMemory())
 llm = OpenAI(api_token=openai_api_key)
 pandas_ai = PandasAI(llm)
 fig = None
+image = Image.open('/Users/virajbansal/Documents/Logo.png')
 
 st.set_page_config(layout='wide')
-st.title("AI Visualizer - AI Data Visualization and Analysis")
+col1, col2, col3, col4, col5, col6, col7, col8, col9 = st.columns(9)
 
-openai_api_key = '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'
+with col1:
+    st.write(' ')
+
+with col2:
+    st.write(' ')
+    
+with col3:
+    st.write(' ')
+    # st.subheader("Your Co-Pilot in Data Science")
+
+with col4:
+    st.title("Code*Char*That      ")
+
+with col5:
+    st.write(' ')
+
+with col6:
+    st.image(image, width=100)
+
+with col7:
+    st.write(' ')
+
+with col8:
+    st.write(' ')
+
+with col9:
+    st.write(' ')
+
+openai_api_key = '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'
 input_csv = st.file_uploader("Upload your CSV file here", type=['csv'])
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -84,9 +114,15 @@ if input_csv is not None:
     if fig is not None:
         for chat in st.session_state.chat_history:
             st.markdown(f"**{chat['user']}:** {chat['message']}")
+        
+        
+
         with st.expander('Expand to see the graph'):
-            st.plotly_chart(fig, use_container_width=True)
-            st.code(code, language='python')
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.code(code, language='python')
+            with col2:
+                st.plotly_chart(fig, use_container_width=True)
 
 
                 
